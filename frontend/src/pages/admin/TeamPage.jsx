@@ -4,7 +4,7 @@ import { toast } from "sonner";
 import { ProfessionalDialog, ServiceDialog } from "@/components/admin/TeamDialogs";
 import { api, errMsg } from "@/lib/api";
 
-const Sample = () => <span className="rounded-full bg-gold/20 text-[#7a5d22] px-2 py-0.5 text-[10px] uppercase tracking-wider">Exemplo</span>;
+const Sample = () => <span className="rounded-full bg-gold/20 text-[#0E7C7D] px-2 py-0.5 text-[10px] uppercase tracking-wider">Exemplo</span>;
 
 export default function TeamPage() {
   const [profs, setProfs] = useState([]);

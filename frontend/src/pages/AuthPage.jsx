@@ -67,7 +67,7 @@ export default function AuthPage() {
         <Link to="/" className="flex items-baseline gap-2 mb-14" data-testid="auth-logo"><span className="font-display text-lg font-semibold">Instituto</span><span className="font-serif italic text-xl text-gold">Belozo</span></Link>
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="w-full max-w-md">
           <Tabs defaultValue="login">
-            <TabsList className="grid grid-cols-2 w-full h-12 rounded-full bg-[#EAE8E0] p-1">
+            <TabsList className="grid grid-cols-2 w-full h-12 rounded-full bg-[#ECEDF1] p-1">
               <TabsTrigger value="login" className="rounded-full" data-testid="auth-tab-login">Entrar</TabsTrigger>
               <TabsTrigger value="register" className="rounded-full" data-testid="auth-tab-register">Criar conta</TabsTrigger>
             </TabsList>

@@ -24,7 +24,7 @@ export default function NotificationsPage() {
         </button>
       </div>
       <div className="flex gap-3 rounded-2xl border border-gold/40 bg-gold/10 p-4 text-sm" data-testid="notifications-simulated-banner">
-        <Info className="w-5 h-5 text-[#8a6a2a] shrink-0" />
+        <Info className="w-5 h-5 text-[#0E7C7D] shrink-0" />
         <p><b>Modo simulado:</b> nenhuma mensagem é enviada de verdade. Tudo fica registrado aqui. O Resumo Diário é gerado automaticamente às 07h (Brasília). Para enviar de verdade, conecte Evolution API, Z-API ou Twilio.</p>
       </div>
       <div className="space-y-3">
@@ -37,7 +37,7 @@ export default function NotificationsPage() {
               </span>
               <span>{fmtDateTime(n.created_at)} · <span className="uppercase tracking-wider">{n.status}</span></span>
             </div>
-            <p className={`mt-3 text-sm rounded-xl px-4 py-3 w-fit max-w-full ${n.channel === "whatsapp" ? "bg-[#E7F0EA]" : "bg-[#F2F1EC]"}`}>{n.message}</p>
+            <p className={`mt-3 text-sm rounded-xl px-4 py-3 w-fit max-w-full ${n.channel === "whatsapp" ? "bg-[#E6FAFA]" : "bg-[#F4F5F7]"}`}>{n.message}</p>
           </div>
         ))}
         {!list.length && <p className="text-charcoal/55" data-testid="notifications-empty">Nenhuma notificação ainda.</p>}

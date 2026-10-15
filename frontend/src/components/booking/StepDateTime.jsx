@@ -58,7 +58,7 @@ export const StepDateTime = ({ service, profId, onDone }) => {
           ))}
         </div>
         <button disabled={!time || busy} onClick={submit} data-testid="wizard-submit-button"
-          className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-gold px-10 py-4 font-semibold text-charcoal disabled:opacity-40 hover:bg-[#d3b06a] transition-colors">
+          className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-gold px-10 py-4 font-semibold text-charcoal disabled:opacity-40 hover:bg-[#5EE8E9] transition-colors">
           {busy && <Loader2 className="w-4 h-4 animate-spin" />} Confirmar agendamento
         </button>
       </div>

@@ -40,7 +40,7 @@ export const ProfessionalDialog = ({ prof, services, onClose, onSaved }) => {
             ))}</div>
           </F>
           {!prof && (
-            <div className="rounded-xl bg-[#F2F1EC] p-4 space-y-3">
+            <div className="rounded-xl bg-[#F4F5F7] p-4 space-y-3">
               <p className="text-xs text-charcoal/60">Acesso ao painel (opcional): o profissional verá apenas a própria agenda e os próprios prontuários.</p>
               <div className="grid grid-cols-2 gap-3">
                 <F label="Email de login"><Input type="email" value={f.email} onChange={set("email")} data-testid="prof-email-input" /></F>

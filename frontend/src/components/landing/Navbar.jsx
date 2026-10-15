@@ -23,7 +23,7 @@ export const Navbar = () => {
   }, []);
   const tone = solid ? "text-charcoal" : "text-cream";
   return (
-    <header data-testid="site-navbar" className={`fixed inset-x-0 top-0 z-50 transition-[background-color,box-shadow,padding] duration-500 ${solid ? "bg-cream/85 backdrop-blur-xl shadow-[0_1px_0_rgba(45,74,62,0.12)] py-3" : "py-6"}`}>
+    <header data-testid="site-navbar" className={`fixed inset-x-0 top-0 z-50 transition-[background-color,box-shadow,padding] duration-500 ${solid ? "bg-cream/85 backdrop-blur-xl shadow-[0_1px_0_rgba(45,28,76,0.12)] py-3" : "py-6"}`}>
       <div className="container-x flex items-center justify-between gap-6">
         <Link to="/" className={`flex items-baseline gap-2 ${tone}`} data-testid="nav-logo">
           <span className="font-display text-lg font-semibold tracking-tight">Instituto</span>
@@ -34,7 +34,7 @@ export const Navbar = () => {
             <a key={href} href={href} className="opacity-80 hover:opacity-100 transition-opacity" data-testid={`nav-link-${href.slice(1)}`}>{label}</a>
           ))}
           <AccountLink user={user} className="opacity-80 hover:opacity-100 transition-opacity" />
-          <Link to="/agendar" data-testid="nav-agendar-link" className="group inline-flex items-center gap-2 rounded-full bg-gold px-5 py-2.5 text-charcoal font-medium hover:bg-[#d3b06a] transition-colors">
+          <Link to="/agendar" data-testid="nav-agendar-link" className="group inline-flex items-center gap-2 rounded-full bg-gold px-5 py-2.5 text-charcoal font-medium hover:bg-[#5EE8E9] transition-colors">
             Agendar avaliação <ArrowUpRight className="w-4 h-4 transition-transform group-hover:rotate-45" />
           </Link>
         </nav>

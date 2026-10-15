@@ -16,14 +16,14 @@ export const EvolutionChart = ({ records }) => {
       <div className="h-64">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart data={data} margin={{ left: -10, right: 0 }}>
-            <CartesianGrid stroke="#2D4A3E15" vertical={false} />
+            <CartesianGrid stroke="#2D1C4C15" vertical={false} />
             <XAxis dataKey="date" tick={{ fontSize: 11 }} />
             <YAxis yAxisId="v" tick={{ fontSize: 11 }} />
             <YAxis yAxisId="d" orientation="right" domain={[0, 10]} tick={{ fontSize: 11 }} />
             <Tooltip />
             <Legend wrapperStyle={{ fontSize: 12 }} />
-            <Line yAxisId="v" type="monotone" dataKey="volume" name="Carga (kg)" stroke="#2D4A3E" strokeWidth={2.5} connectNulls dot={{ r: 3 }} />
-            <Line yAxisId="d" type="monotone" dataKey="dor" name="Dor (0-10)" stroke="#C86D51" strokeWidth={2.5} connectNulls dot={{ r: 3 }} />
+            <Line yAxisId="v" type="monotone" dataKey="volume" name="Carga (kg)" stroke="#2D1C4C" strokeWidth={2.5} connectNulls dot={{ r: 3 }} />
+            <Line yAxisId="d" type="monotone" dataKey="dor" name="Dor (0-10)" stroke="#1FB5B6" strokeWidth={2.5} connectNulls dot={{ r: 3 }} />
           </LineChart>
         </ResponsiveContainer>
       </div>

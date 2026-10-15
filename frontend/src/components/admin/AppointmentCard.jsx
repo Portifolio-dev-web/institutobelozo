@@ -40,7 +40,7 @@ export const AppointmentCard = ({ a, onChanged, showDate }) => {
         <p className="text-xs text-charcoal/55">{a.service_name} · {a.professional_name}</p>
       </div>
       {pending && (
-        <p data-testid={`appt-sla-${a.id}`} className={`inline-flex items-center gap-1 text-xs font-medium ${late ? "text-[#DC2626]" : "text-[#8a6a2a]"}`}>
+        <p data-testid={`appt-sla-${a.id}`} className={`inline-flex items-center gap-1 text-xs font-medium ${late ? "text-[#DC2626]" : "text-[#0E7C7D]"}`}>
           <Timer className="w-3.5 h-3.5" /> {late ? "SLA estourado · " : "Aguardando há "}{fmtElapsed(waited)}
         </p>
       )}

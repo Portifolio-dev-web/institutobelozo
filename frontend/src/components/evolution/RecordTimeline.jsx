@@ -3,7 +3,7 @@ import { fmtLong } from "@/lib/format";
 
 const Metric = ({ label, value }) =>
   value || value === 0 ? (
-    <span className="rounded-full bg-[#EFEDE6] px-3 py-1 text-xs"><span className="text-charcoal/50">{label}</span> <b className="font-medium">{value}</b></span>
+    <span className="rounded-full bg-[#F4F5F7] px-3 py-1 text-xs"><span className="text-charcoal/50">{label}</span> <b className="font-medium">{value}</b></span>
   ) : null;
 
 export const RecordTimeline = ({ records, onDelete }) => {

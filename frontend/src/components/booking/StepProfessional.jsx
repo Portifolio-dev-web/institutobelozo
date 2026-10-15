@@ -5,7 +5,7 @@ import { api } from "@/lib/api";
 const Option = ({ testId, title, sub, initials, onClick, featured }) => (
   <button onClick={onClick} data-testid={testId}
     className={`flex items-center gap-5 text-left rounded-2xl border p-6 hover:border-moss hover:-translate-y-1 transition-[transform,border-color] ${featured ? "bg-moss text-cream border-moss" : "bg-white"}`}>
-    <span className={`grid place-items-center w-14 h-14 rounded-full shrink-0 font-display font-semibold ${featured ? "bg-cream/10" : "bg-[#EAE8E0] text-moss"}`}>
+    <span className={`grid place-items-center w-14 h-14 rounded-full shrink-0 font-display font-semibold ${featured ? "bg-cream/10" : "bg-[#ECEDF1] text-moss"}`}>
       {initials || <Users className="w-6 h-6" />}
     </span>
     <span>

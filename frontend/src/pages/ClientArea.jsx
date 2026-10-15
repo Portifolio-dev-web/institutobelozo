@@ -57,7 +57,7 @@ export default function ClientArea() {
           <Link to="/agendar" className="inline-flex items-center gap-2 rounded-full bg-moss text-cream px-6 py-3 hover:bg-moss-dark transition-colors" data-testid="client-new-booking-button"><Plus className="w-4 h-4" /> Novo agendamento</Link>
         </div>
         <Tabs defaultValue="appts">
-          <TabsList className="h-12 rounded-full bg-[#EAE8E0] p-1">
+          <TabsList className="h-12 rounded-full bg-[#ECEDF1] p-1">
             <TabsTrigger value="appts" className="rounded-full px-5" data-testid="client-tab-appointments">Meus Agendamentos</TabsTrigger>
             <TabsTrigger value="evo" className="rounded-full px-5" data-testid="client-tab-evolution">Minha Evolução</TabsTrigger>
           </TabsList>

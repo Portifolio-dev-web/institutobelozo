@@ -20,11 +20,11 @@ module.exports = {
         serif: ['"Playfair Display"', 'serif']
       },
       colors: {
-        moss: { DEFAULT: '#2D4A3E', dark: '#1E332A', light: '#4E7362' },
-        cream: '#F7F6F2',
-        charcoal: { DEFAULT: '#141715', soft: '#1E2220' },
-        gold: '#C5A059',
-        terra: '#C86D51',
+        moss: { DEFAULT: '#2D1C4C', dark: '#1E1235', light: '#6A5A8C' },
+        cream: '#FFFFFF',
+        charcoal: { DEFAULT: '#111316', soft: '#1B1E22' },
+        gold: '#36DFE0',
+        terra: '#1FB5B6',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         card: {

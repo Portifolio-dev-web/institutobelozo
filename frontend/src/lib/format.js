@@ -37,7 +37,7 @@ export const fmtElapsed = (min) => {
 };
 
 export const STATUS = {
-  pending: { label: "Pendente", cls: "bg-gold/15 text-[#8a6a2a] border-gold/40" },
+  pending: { label: "Pendente", cls: "bg-gold/15 text-[#0E7C7D] border-gold/40" },
   confirmed: { label: "Confirmado", cls: "bg-moss/10 text-moss border-moss/30" },
   cancelled: { label: "Cancelado", cls: "bg-charcoal/5 text-charcoal/50 border-charcoal/15" },
 };

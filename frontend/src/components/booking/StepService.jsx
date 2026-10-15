@@ -13,7 +13,7 @@ export const StepService = ({ services, highlight, onPick }) => (
           <div className="grid sm:grid-cols-2 gap-4">
             {list.map((s) => (
               <button key={s.id} onClick={() => onPick(s)} data-testid={`wizard-service-option-${s.id}`}
-                className={`group text-left rounded-2xl border bg-white p-6 sm:p-8 hover:border-moss hover:-translate-y-1 hover:shadow-[0_20px_50px_-25px_rgba(45,74,62,0.45)] transition-[transform,box-shadow,border-color] ${highlight === cat ? "border-moss/40" : ""}`}>
+                className={`group text-left rounded-2xl border bg-white p-6 sm:p-8 hover:border-moss hover:-translate-y-1 hover:shadow-[0_20px_50px_-25px_rgba(45,28,76,0.45)] transition-[transform,box-shadow,border-color] ${highlight === cat ? "border-moss/40" : ""}`}>
                 <div className="flex items-start justify-between gap-4">
                   <p className="text-lg font-display font-semibold">{s.name}</p>
                   <ArrowRight className="w-5 h-5 text-moss opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-[opacity,transform]" />

@@ -66,7 +66,7 @@ export default function BookingPage() {
               <div className="mb-8 flex flex-wrap items-center gap-3 text-sm" data-testid="wizard-summary">
                 <button onClick={() => setStep(step - 1)} className="inline-flex items-center gap-1 text-charcoal/60 hover:text-charcoal" data-testid="wizard-back-button"><ArrowLeft className="w-4 h-4" /> Voltar</button>
                 <span className="rounded-full bg-moss/10 text-moss px-3 py-1">{sel.service?.name}</span>
-                {step > 1 && <span className="rounded-full bg-gold/15 text-[#7a5d22] px-3 py-1">{sel.profName}</span>}
+                {step > 1 && <span className="rounded-full bg-gold/15 text-[#0E7C7D] px-3 py-1">{sel.profName}</span>}
               </div>
             )}
             <AnimatePresence mode="wait">

@@ -36,7 +36,7 @@ export default function AdminLayout() {
   const items = NAV.filter((n) => !n[4] || user.role === "admin");
 
   return (
-    <div className="min-h-screen bg-[#F2F1EC] lg:grid lg:grid-cols-[260px,1fr]" data-testid="admin-layout">
+    <div className="min-h-screen bg-[#F4F5F7] lg:grid lg:grid-cols-[260px,1fr]" data-testid="admin-layout">
       <aside className="bg-charcoal text-cream/80 lg:min-h-screen lg:sticky lg:top-0 lg:h-screen flex lg:flex-col">
         <Link to="/" className="hidden lg:flex items-baseline gap-2 px-8 py-8 text-cream" data-testid="admin-logo"><span className="font-display font-semibold">Instituto</span><span className="font-serif italic text-xl text-gold">Belozo</span></Link>
         <nav className="flex lg:flex-col gap-1 overflow-x-auto px-3 lg:px-4 py-3 lg:py-0 flex-1">
@@ -54,7 +54,7 @@ export default function AdminLayout() {
         </div>
       </aside>
       <div className="min-w-0">
-        <header className="sticky top-0 z-30 bg-[#F2F1EC]/90 backdrop-blur-xl border-b px-5 sm:px-10 py-4 flex flex-wrap items-center justify-between gap-3">
+        <header className="sticky top-0 z-30 bg-[#F4F5F7]/90 backdrop-blur-xl border-b px-5 sm:px-10 py-4 flex flex-wrap items-center justify-between gap-3">
           <p className="font-display font-medium">Painel da equipe</p>
           <div className="flex items-center gap-3">
             <SlaCounter summary={summary} />

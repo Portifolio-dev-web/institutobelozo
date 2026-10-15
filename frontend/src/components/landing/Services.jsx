@@ -36,7 +36,7 @@ const ServiceCard = ({ c, i }) => (
 );
 
 export const Services = () => (
-  <section id="servicos" className="py-24 lg:py-36 bg-[#EFEDE6]" data-testid="services-section">
+  <section id="servicos" className="py-24 lg:py-36 bg-[#F4F5F7]" data-testid="services-section">
     <div className="container-x">
       <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16">
         <div className="space-y-6">
