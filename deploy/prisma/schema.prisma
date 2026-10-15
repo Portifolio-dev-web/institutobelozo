@@ -1,0 +1,185 @@
+// Instituto Belozo — schema relacional PostgreSQL (kit para servidor próprio)
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  CLIENT
+  PROFESSIONAL
+  ADMIN
+}
+
+enum ServiceCategory {
+  PERSONAL
+  FISIO
+}
+
+enum AppointmentStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+}
+
+enum NotificationChannel {
+  WHATSAPP
+  EMAIL
+}
+
+model User {
+  id             String        @id @default(uuid())
+  name           String
+  email          String        @unique
+  whatsapp       String
+  passwordHash   String
+  role           Role          @default(CLIENT)
+  professionalId String?       @unique
+  professional   Professional? @relation(fields: [professionalId], references: [id])
+  appointments   Appointment[] @relation("ClientAppointments")
+  records        Record[]      @relation("ClientRecords")
+  recurrences    Recurrence[]
+  createdAt      DateTime      @default(now())
+}
+
+model Professional {
+  id             String                @id @default(uuid())
+  name           String
+  whatsapp       String
+  specialty      String
+  bio            String                @default("")
+  sessionMinutes Int                   @default(60)
+  active         Boolean               @default(true)
+  isSample       Boolean               @default(false)
+  user           User?
+  services       ProfessionalService[]
+  scheduleBlocks ScheduleBlock[]
+  appointments   Appointment[]
+  recurrences    Recurrence[]
+  records        Record[]
+  createdAt      DateTime              @default(now())
+}
+
+model Service {
+  id            String                @id @default(uuid())
+  name          String
+  category      ServiceCategory
+  description   String                @default("")
+  active        Boolean               @default(true)
+  isSample      Boolean               @default(false)
+  order         Int                   @default(0)
+  professionals ProfessionalService[]
+  appointments  Appointment[]
+  recurrences   Recurrence[]
+}
+
+model ProfessionalService {
+  professionalId String
+  serviceId      String
+  professional   Professional @relation(fields: [professionalId], references: [id])
+  service        Service      @relation(fields: [serviceId], references: [id])
+
+  @@id([professionalId, serviceId])
+}
+
+// Grade semanal: weekday 0 = segunda ... 6 = domingo
+model ScheduleBlock {
+  id             String       @id @default(uuid())
+  professionalId String
+  professional   Professional @relation(fields: [professionalId], references: [id], onDelete: Cascade)
+  weekday        Int
+  startTime      String // "08:00"
+  endTime        String // "12:00"
+
+  @@index([professionalId, weekday])
+}
+
+model Appointment {
+  id             String            @id @default(uuid())
+  clientId       String
+  client         User              @relation("ClientAppointments", fields: [clientId], references: [id])
+  professionalId String
+  professional   Professional      @relation(fields: [professionalId], references: [id])
+  serviceId      String
+  service        Service           @relation(fields: [serviceId], references: [id])
+  date           DateTime          @db.Date
+  time           String // "HH:MM" (America/Sao_Paulo)
+  status         AppointmentStatus @default(PENDING)
+  active         Boolean           @default(true) // false quando cancelado
+  recurrenceId   String?
+  recurrence     Recurrence?       @relation(fields: [recurrenceId], references: [id])
+  createdAt      DateTime          @default(now()) // início do SLA
+  respondedAt    DateTime?
+  records        Record[]
+
+  @@index([professionalId, date])
+  @@index([clientId, date])
+  // Anti-overbooking: crie também o índice parcial em migration SQL:
+  // CREATE UNIQUE INDEX no_overbooking ON "Appointment" ("professionalId", "date", "time") WHERE "active" = true;
+}
+
+model Recurrence {
+  id             String        @id @default(uuid())
+  clientId       String
+  client         User          @relation(fields: [clientId], references: [id])
+  professionalId String
+  professional   Professional  @relation(fields: [professionalId], references: [id])
+  serviceId      String
+  service        Service       @relation(fields: [serviceId], references: [id])
+  weekday        Int
+  time           String
+  startDate      DateTime      @db.Date
+  generatedUntil DateTime      @db.Date
+  skippedDates   DateTime[]    @db.Date
+  active         Boolean       @default(true)
+  appointments   Appointment[]
+  createdAt      DateTime      @default(now())
+}
+
+model Record {
+  id             String        @id @default(uuid())
+  clientId       String
+  client         User          @relation("ClientRecords", fields: [clientId], references: [id])
+  professionalId String?
+  professional   Professional? @relation(fields: [professionalId], references: [id])
+  appointmentId  String?
+  appointment    Appointment?  @relation(fields: [appointmentId], references: [id])
+  date           DateTime      @db.Date
+  notes          String        @default("")
+  weight         Float?
+  pain           Int? // 0 a 10
+  mobility       String        @default("")
+  recoveryNotes  String        @default("")
+  exercises      RecordExercise[]
+  createdAt      DateTime      @default(now())
+
+  @@index([clientId, date])
+}
+
+model RecordExercise {
+  id       String  @id @default(uuid())
+  recordId String
+  record   Record  @relation(fields: [recordId], references: [id], onDelete: Cascade)
+  name     String
+  sets     Int?
+  reps     Int?
+  load     Float?
+}
+
+model Notification {
+  id            String              @id @default(uuid())
+  channel       NotificationChannel
+  kind          String // confirmacao | cancelamento | reagendamento | resumo_diario
+  recipientName String
+  to            String
+  message       String
+  status        String // simulado | enviado | erro
+  provider      String
+  meta          Json?
+  createdAt     DateTime            @default(now())
+
+  @@index([createdAt])
+}

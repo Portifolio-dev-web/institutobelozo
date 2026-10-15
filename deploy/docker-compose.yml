@@ -1,0 +1,50 @@
+# Rodar a partir da raiz do projeto: docker compose -f deploy/docker-compose.yml --env-file deploy/.env up -d
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: belozo
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  mongo:
+    image: mongo:7
+    volumes:
+      - mongodata:/data/db
+
+  backend:
+    build:
+      context: ..
+      dockerfile: deploy/backend.Dockerfile
+    environment:
+      MONGO_URL: mongodb://mongo:27017
+      DB_NAME: belozo
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/belozo
+      CORS_ORIGINS: ${FRONTEND_URL}
+      JWT_SECRET: ${JWT_SECRET}
+      ADMIN_EMAIL: ${ADMIN_EMAIL}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+      SAMPLE_STAFF_PASSWORD: ${SAMPLE_STAFF_PASSWORD}
+      WEBHOOK_CRON_SECRET: ${WEBHOOK_CRON_SECRET}
+      WHATSAPP_PROVIDER: ${WHATSAPP_PROVIDER}
+    depends_on: [postgres, mongo]
+    ports:
+      - "8001:8001"
+
+  frontend:
+    build:
+      context: ..
+      dockerfile: deploy/frontend.Dockerfile
+      args:
+        REACT_APP_BACKEND_URL: ${BACKEND_PUBLIC_URL}
+    ports:
+      - "80:80"
+    depends_on: [backend]
+
+volumes:
+  pgdata:
+  mongodata:

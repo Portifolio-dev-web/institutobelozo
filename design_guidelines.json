@@ -1,0 +1,134 @@
+{
+  "project_name": "Instituto Belozo",
+  "archetype": "Organic Luxury & Swiss Precision",
+  "language": "pt-BR",
+  "theme_strategy": "Light & Dark Toggle (Defaulting to Warm Natural Light with Off-White and Deep Moss Green)",
+  "typography": {
+    "heading_font": "Plus Jakarta Sans / Playfair Display (Google Fonts link to be included)",
+    "body_font": "DM Sans / Inter",
+    "hierarchy": {
+      "h1": "text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1]",
+      "h2": "text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight leading-snug",
+      "h3": "text-xl sm:text-2xl font-medium tracking-tight",
+      "h4": "text-lg sm:text-xl font-medium",
+      "body": "text-base sm:text-lg leading-relaxed text-slate-700 dark:text-slate-300",
+      "caption": "text-xs uppercase tracking-[0.2em] font-medium text-emerald-800 dark:text-emerald-400"
+    },
+    "forbidden_fonts": [
+      "Inter for main H1/H2 headings (use Plus Jakarta Sans or Playfair Display)",
+      "Space Grotesk"
+    ]
+  },
+  "colors": {
+    "moss_green_primary": "#2D4A3E",
+    "moss_green_dark": "#1E332A",
+    "moss_green_light": "#4E7362",
+    "off_white_bg": "#F7F6F2",
+    "charcoal_text": "#141715",
+    "charcoal_surface": "#1E2220",
+    "gold_accent": "#C5A059",
+    "gold_accent_light": "#D4AF37",
+    "terracotta_accent": "#C86D51",
+    "sla_alert_red": "#DC2626",
+    "sla_alert_bg": "#FEF2F2",
+    "border_light": "rgba(45, 74, 62, 0.12)",
+    "border_dark": "rgba(247, 246, 242, 0.12)",
+    "rules": [
+      "SLA 1h overdue alert cards and SLA counter are the ONLY elements permitted to use vivid red (#DC2626). All other alerts/accents must adhere to moss green, gold, or terracotta.",
+      "Never use pure black (#000000). Always use Charcoal Tint (#141715).",
+      "Never use pure gray backgrounds. Use Off-white (#F7F6F2) for light mode."
+    ]
+  },
+  "layout_and_spacing": {
+    "philosophy": "Breathing Design with generous padding (2x-3x standard). Mobile-first up to Ultrawide (21:9 screen optimization).",
+    "hero_section": "Full screen high impact loop video background, max overlay opacity bg-black/40 with smooth gradient scrim for high text contrast.",
+    "bento_grid": "Asymmetric multi-span layout for services and facilities gallery.",
+    "container_padding": "px-6 sm:px-12 lg:px-20 py-16 lg:py-28"
+  },
+  "image_urls": {
+    "hero_background_video": "https://assets.mixkit.co/videos/preview/mixkit-man-doing-exercises-with-dumbbells-41484-large.mp4",
+    "results_background_video": "https://assets.mixkit.co/videos/preview/mixkit-athlete-stretching-before-workout-41486-large.mp4",
+    "gym_interior_1": "https://images.unsplash.com/photo-1637430308606-86576d8fef3c?crop=entropy&cs=srgb&fm=jpg&q=85",
+    "gym_interior_2": "https://images.unsplash.com/photo-1685633224860-7655234d9cd5?crop=entropy&cs=srgb&fm=jpg&q=85",
+    "gym_equipment": "https://images.unsplash.com/photo-1771270786606-f5a0e57db762?crop=entropy&cs=srgb&fm=jpg&q=85",
+    "physiotherapy_treatment": "https://images.unsplash.com/photo-1706353399656-210cca727a33?crop=entropy&cs=srgb&fm=jpg&q=85",
+    "rehab_exercise": "https://images.unsplash.com/photo-1645005513713-9e2b92a687d3?crop=entropy&cs=srgb&fm=jpg&q=85",
+    "personal_training_session": "https://images.unsplash.com/photo-1645005513709-77336f075dc8?crop=entropy&cs=srgb&fm=jpg&q=85"
+  },
+  "key_features_and_flows": [
+    {
+      "feature": "Header / Navigation Bar",
+      "details": "Sticky glassmorphic navbar with backdrop-blur-md bg-[#F7F6F2]/85 dark:bg-[#141715]/85. Includes logo 'Instituto Belozo', smooth scroll links (Sobre Nós, Serviços, Estrutura, Avaliação), CTA 'Agendar Avaliação', Auth Modal Trigger, and Admin View Switcher."
+    },
+    {
+      "feature": "Hero Landing",
+      "details": "Autoplay muted background video loop + dark gradient overlay + headline on physical transformation & biomechanical health + primary CTA 'Agende sua Avaliação' + quick highlight pill badges."
+    },
+    {
+      "feature": "Sobre Nós (Reveal on Scroll)",
+      "details": "Framer motion scroll reveal animations with staggered images of studio facilities and movement specialists, brand mission statement on individual biomechanics and personalized care."
+    },
+    {
+      "feature": "Serviços Interativos",
+      "details": "Hover-interactive cards for Personal Training, Fisioterapia Integrativa, Reabilitação Funcional, and Avaliação Postural. Includes modal with detailed methodology and direct 'Agendar este serviço' action."
+    },
+    {
+      "feature": "Galeria & Estrutura (Parallax)",
+      "details": "Framer Motion parallax scrolling effect on studio atmosphere photos showcasing high-end equipment, private rooms, and consultation space."
+    },
+    {
+      "feature": "Resultados & Vídeo Metodologia",
+      "details": "Loop video section highlighting client recovery & strength progression with interactive statistics counters (e.g. +98% taxa de recuperação sem dor, 100% atendimento individualizado)."
+    },
+    {
+      "feature": "Wizard de Agendamento em 3 Passos",
+      "details": "Passo 1: Seleção de Serviço -> Passo 2: Escolha de Profissional (ou 'Qualquer profissional disponível') -> Passo 3: Calendário visual com apenas horários disponíveis e confirmação instantânea."
+    },
+    {
+      "feature": "Autenticação de Cliente",
+      "details": "Login/Cadastro modal or page with inputs: Nome completo, WhatsApp (com máscara PT-BR), E-mail, Senha. Persisted local session."
+    },
+    {
+      "feature": "Área do Cliente (Meus Agendamentos & Minha Evolução)",
+      "details": "Tabbed client portal. 'Meus Agendamentos' allows viewing, rescheduling, or canceling sessions. 'Minha Evolução' displays read-only metrics: load progression timeline, posture evolution notes, and interactive load vs. pain chart."
+    },
+    {
+      "feature": "Painel Admin Sóbrio",
+      "details": "Admin view in moss green palette featuring: 1) Calendário dia/semana view, 2) Kanban Board (Pendente / Confirmado / Cancelado) with drag/toggle, 3) Action buttons (Confirmar, Reagendar, Cancelar), 4) SLA 1h Alert Card (vivid red highlight + countdown timer for pending requests exceeding 1 hour), 5) Occupancy rate widget (Livre vs Ocupado %), 6) Weekly schedule grid by professional, 7) Mini-prontuário (patient clinical notes, exercise loads, pain rating chart, timeline history), 8) Simulated Notifications screen (WhatsApp messages, system alerts)."
+    }
+  ],
+  "motion_and_animations": {
+    "library": "framer-motion",
+    "hero_animations": "Staggered text fade-in with slide-up motion",
+    "parallax_scrolling": "useScroll and useTransform for smooth multi-depth background scrolling",
+    "cards_hover": "Scale 1.02 hover elevation with subtle border stroke highlight (gold/terracotta)",
+    "wizard_transitions": "AnimatePresence page slide and opacity transitions between steps 1, 2, and 3",
+    "accessibility": "Respect prefers-reduced-motion media query"
+  },
+  "testing_attributes": {
+    "rule": "Every interactive and key informational element MUST include a data-testid attribute in kebab-case.",
+    "examples": [
+      "data-testid='hero-cta-button'",
+      "data-testid='nav-agendar-link'",
+      "data-testid='service-card-personal'",
+      "data-testid='service-card-fisio'",
+      "data-testid='wizard-step-1-service'",
+      "data-testid='wizard-step-2-prof'",
+      "data-testid='wizard-step-3-calendar'",
+      "data-testid='wizard-submit-button'",
+      "data-testid='auth-login-button'",
+      "data-testid='auth-register-whatsapp-input'",
+      "data-testid='admin-sla-alert-card'",
+      "data-testid='admin-kanban-confirm-button'",
+      "data-testid='admin-prontuario-chart'"
+    ]
+  },
+  "instructions_to_main_agent": [
+    "Build a complete, responsive, single-page or multi-view React app using Javascript (.js/.jsx) with Tailwind CSS, shadcn UI components, and framer-motion.",
+    "Ensure all components strictly adhere to the moss green (#2D4A3E), off-white (#F7F6F2), dark charcoal (#141715), and gold/terracotta accent palette.",
+    "Apply vivid red (#DC2626) ONLY to the Admin SLA 1h overdue alert cards and badge counter.",
+    "Ensure video placeholders work smoothly with muted, loop, playsInline attributes and fallbacks.",
+    "Ensure data-testid attributes are present across all interactive elements for test compliance.",
+    "Provide a smooth switch between Client Landing/App view and Admin Dashboard view in the header."
+  ]
+}
