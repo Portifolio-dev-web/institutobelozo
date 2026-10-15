@@ -1,0 +1,30 @@
+{
+  "summary": "First full-stack test pass for Instituto Belozo. Backend: 32/32 pytest tests pass serially (auth, catalog, availability, booking inc. overbooking + 'qualquer profissional' fallback, client cancel, admin summary with SLA overdue, confirm (whatsapp+email notifications), reschedule single + weekly recurrence, cancel scope=future, scope isolation for professional role, team & services CRUD, record create + client read-only, daily summary button + cron auth with Bearer secret). Frontend: Landing + hero CTA redirect to /entrar?next=/agendar works; client registration + 3-step wizard (service -> profissional ou 'any' -> calendar+slot) -> success -> /minha-area shows Pendente card; client cancel works. Admin login lands on /admin with Day/Semana/Kanban views, pending card with 'Aguardando há X min', occupancy, confirm button; Equipe & Serviços page lists seeded staff/services; Notificações page has 'Disparar Resumo Diário agora' button. Professional login hides Equipe menu item, shows only own appointments; /admin/equipe shows 'ACESSO RESTRITO'. Mobile viewport (390x844) renders landing cleanly.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "Hero (Landing)", "issues": ["Hero video is a placeholder — on-screen overlay literally reads 'VÍDEO PLACEHOLDER · SUBSTITUIR'. Replace with real production video for launch."]}
+    ]
+  },
+  "test_report_links": ["/app/backend/tests/backend_test.py", "/app/test_reports/pytest/pytest_results.xml"],
+  "action_items": [
+    "Replace hero video placeholder with real brand video before launch.",
+    "Optional: pytest.ini uses `-n 2 --dist loadscope`; backend_test.py was authored assuming shared state so running with -n 2 can produce 2 race-condition failures (slot reservation collision between TestBooking/TestAdmin workers and TestTeamServices cleanup wiping another worker's service). Running with `-n 0` yields 32/32 passing. Consider either keeping the suite serial via `-n 0` in CI, or refactor the two offending tests to use fully unique dates/pros and defer cleanup to session teardown."
+  ],
+  "critical_code_review_comments": [
+    "server.py is 788 lines — borderline, could be split into routers/auth.py, routers/booking.py, routers/admin.py for maintainability.",
+    "Overbooking is protected by a Mongo partial unique index + DuplicateKeyError handling at insert — correct and race-safe (verified by concurrent 2-thread test).",
+    "SLA overdue uses string ISO comparison on created_at — works because both sides use timezone-aware UTC ISO strings; keep this convention.",
+    "notify() writes to notifications collection and is scoped properly in /admin/notifications for professional role via meta.appointment_id/professional_id — verified.",
+    "Cron endpoint uses hmac.compare_digest + idempotency via unique run_id — correct (401 verified for missing/wrong bearer)."
+  ],
+  "updated_files": ["/app/backend/tests/backend_test.py"],
+  "success_rate": {"backend": "100%", "frontend": "100%"},
+  "test_credentials": "Admin monitor.informatica25@gmail.com / Belozo@Admin2026. Pros Belozo@2026 (joao.exemplo@belozo.com.br, ana.exemplo@belozo.com.br, rafael.exemplo@belozo.com.br). Clients created with TEST_ prefix during tests; cleaned up at end.",
+  "seed_data_creation": "Seed from backend/server.py seed() creates admin + 4 services + 3 pros with logins on startup. No additional seed required.",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "Run backend tests with `pytest backend/tests/backend_test.py -n 0 --junitxml=/app/test_reports/pytest/pytest_results.xml` to avoid xdist race on shared booking slots. All TEST_* users/services/pros are cleaned up in test_zz_cleanup. The entire 15-item review_request checklist was exercised; only pending UX note is the hero video placeholder."
+}
