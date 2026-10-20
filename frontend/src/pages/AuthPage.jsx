@@ -5,6 +5,7 @@ import { Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
+import { PasswordInput } from "@/components/ui/password-input";
 import { Label } from "@/components/ui/label";
 import { useAuth, isStaff } from "@/context/AuthContext";
 import { errMsg } from "@/lib/api";
@@ -12,10 +13,12 @@ import { maskPhone } from "@/lib/format";
 
 const IMG = "https://images.unsplash.com/photo-1685633224860-7655234d9cd5?crop=entropy&cs=srgb&fm=jpg&q=80&w=1400";
 
-const Field = ({ id, label, ...p }) => (
+const Field = ({ id, label, type, ...p }) => (
   <div className="space-y-2">
     <Label htmlFor={id} className="text-xs uppercase tracking-[0.15em] text-charcoal/60">{label}</Label>
-    <Input id={id} className="h-12 rounded-xl bg-white" {...p} />
+    {type === "password"
+      ? <PasswordInput id={id} className="h-12 rounded-xl bg-white" {...p} />
+      : <Input id={id} type={type} className="h-12 rounded-xl bg-white" {...p} />}
   </div>
 );
 
@@ -34,7 +37,11 @@ export default function AuthPage() {
   const [f, setF] = useState({ name: "", whatsapp: "", email: "", password: "" });
   const set = (k) => (e) => setF({ ...f, [k]: k === "whatsapp" ? maskPhone(e.target.value) : e.target.value });
 
-  const go = (u) => nav(next || (isStaff(u) ? "/admin" : "/minha-area"), { replace: true });
+  const go = (u) => {
+    const home = isStaff(u) ? "/admin" : "/minha-area";
+    const nextAllowed = next && (isStaff(u) ? next.startsWith("/admin") : next.startsWith("/agendar") || next.startsWith("/minha-area"));
+    nav(nextAllowed ? next : home, { replace: true });
+  };
   useEffect(() => {
     if (user) go(user);
   }, [user]); // eslint-disable-line react-hooks/exhaustive-deps

@@ -13,7 +13,7 @@ docker compose -f deploy\docker-compose.yml --env-file deploy\.env up --build -d
 
 Abra o site em <http://localhost:3000>. A API fica disponível em <http://localhost:8001/docs>. O PostgreSQL fica disponível apenas na própria máquina, na porta `5432`.
 
-O usuário administrador inicial é `admin@institutobelozo.local`, com a senha definida em `ADMIN_PASSWORD` dentro de `deploy\.env`. Altere as senhas e os segredos do arquivo antes de usar a aplicação fora da sua máquina. O provedor de WhatsApp local inicia como `simulated`.
+O usuário administrador inicial é `admin@institutobelozo.com.br`, com a senha definida em `ADMIN_PASSWORD` dentro de `deploy\.env`. Altere as senhas e os segredos do arquivo antes de usar a aplicação fora da sua máquina. O provedor de WhatsApp local inicia como `simulated`.
 
 Para acompanhar os serviços ou encerrá-los:
 

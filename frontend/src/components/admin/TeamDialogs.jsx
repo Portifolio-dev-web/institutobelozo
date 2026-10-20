@@ -2,6 +2,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
+import { PasswordInput } from "@/components/ui/password-input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -44,7 +45,7 @@ export const ProfessionalDialog = ({ prof, services, onClose, onSaved }) => {
               <p className="text-xs text-charcoal/60">Acesso ao painel (opcional): o profissional verá apenas a própria agenda e os próprios prontuários.</p>
               <div className="grid grid-cols-2 gap-3">
                 <F label="Email de login"><Input type="email" value={f.email} onChange={set("email")} data-testid="prof-email-input" /></F>
-                <F label="Senha"><Input type="password" value={f.password} onChange={set("password")} data-testid="prof-password-input" /></F>
+                <F label="Senha"><PasswordInput value={f.password} onChange={set("password")} data-testid="prof-password-input" /></F>
               </div>
             </div>
           )}
