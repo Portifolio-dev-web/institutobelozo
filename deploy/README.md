@@ -1,5 +1,31 @@
 # Kit para servidor próprio — Instituto Belozo
 
+## Rodar localmente com Docker
+
+Pré-requisitos: Docker Desktop instalado e em execução.
+
+Na raiz do repositório, crie o arquivo de configuração local e suba os serviços:
+
+```powershell
+if (-not (Test-Path deploy\.env)) { Copy-Item deploy\.env.example deploy\.env }
+docker compose -f deploy\docker-compose.yml --env-file deploy\.env up --build -d
+```
+
+Abra o site em <http://localhost:3000>. A API fica disponível em <http://localhost:8001/docs>. O PostgreSQL fica disponível apenas na própria máquina, na porta `5432`.
+
+O usuário administrador inicial é `admin@institutobelozo.local`, com a senha definida em `ADMIN_PASSWORD` dentro de `deploy\.env`. Altere as senhas e os segredos do arquivo antes de usar a aplicação fora da sua máquina. O provedor de WhatsApp local inicia como `simulated`.
+
+Para acompanhar os serviços ou encerrá-los:
+
+```powershell
+docker compose -f deploy\docker-compose.yml --env-file deploy\.env logs -f
+docker compose -f deploy\docker-compose.yml --env-file deploy\.env down
+```
+
+Os dados do PostgreSQL e do MongoDB são preservados em volumes Docker após `down`. Para apagar também esses dados, use `down --volumes`.
+
+## Componentes e migração
+
 - `prisma/schema.prisma`: schema relacional PostgreSQL completo (usuários, profissionais, serviços, grades, agendamentos, recorrências, prontuários e notificações). Gere as tabelas com `npx prisma migrate dev` e adicione o índice parcial anti-overbooking indicado no model `Appointment`.
 - `backend.Dockerfile` / `frontend.Dockerfile`: imagens da API (FastAPI) e do site (React + nginx).
 - `docker-compose.yml`: sobe PostgreSQL, a API, o site e o MongoDB.
